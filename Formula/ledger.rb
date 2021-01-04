@@ -34,7 +34,7 @@ class Ledger < Formula
 
     system "./acprep", "opt", "make", *args
 
-    inreplace "build/src/cmake_install.cmake", "#{python_framewrok}/lib/python#{python_version}/site-packages", "#{site_packages_dir}"
+    inreplace "build/src/cmake_install.cmake", "#{python_framework}/lib/python#{python_version}/site-packages", "#{site_packages_dir}"
 
     system "./acprep", "opt", "make", "doc", *args
     system "./acprep", "opt", "make", "install", *args
