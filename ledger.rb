@@ -29,7 +29,7 @@ class Ledger < Formula
     ] + std_cmake_args
 
     python_version = Language::Python.major_minor_version Formula["python@3.9"].opt_bin/"python3"
-    python_framework = Formula["python@3.9"].opt_frameworks/"Python.framework/Versions/#{python_version}"
+    python_framework = Formula["python@3.9"].prefix/"Python.framework/Versions/#{python_version}"
     site_packages_dir = lib/"python#{python_version}/site-packages"
 
     system "./acprep", "opt", "make", *args
