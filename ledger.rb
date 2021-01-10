@@ -28,13 +28,14 @@ class Ledger < Formula
       -DPython_FIND_VERSION_MAJOR=3
     ] + std_cmake_args
 
-    python_version = Language::Python.major_minor_version Formula["python@3.9"].opt_bin/"python3"
-    python_framework = "/usr/local/Cellar/python@3.9/3.9.1_3/Frameworks/Python.framework/Versions/#{python_version}"
-    site_packages_dir = lib/"python#{python_version}/site-packages"
+    python_formula_version = Formula["python@3.9"].version
+    python_formula_revision = Formula["python@3.9"].revision
+    python_framework = "#{HOMEBREW_PREFIX}/Cellar/python@3.9/#{python_formula_version}_#{python_formula_revision}/Frameworks/Python.framework/Versions/3.9"
+    site_packages_dir = lib/"python3.9/site-packages"
 
     system "./acprep", "opt", "make", *args
 
-    inreplace "build/src/cmake_install.cmake", "#{python_framework}/lib/python#{python_version}/site-packages", "#{site_packages_dir}"
+    inreplace "build/src/cmake_install.cmake", "#{python_framework}/lib/python3.9/site-packages", "#{site_packages_dir}"
 
     system "./acprep", "opt", "make", "doc", *args
     system "./acprep", "opt", "make", "install", *args
