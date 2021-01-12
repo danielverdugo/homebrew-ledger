@@ -3,14 +3,19 @@ class Ledger < Formula
   homepage "https://ledger-cli.org"
   url "https://github.com/ledger/ledger/archive/v3.2.1.tar.gz"
   sha256 "92bf09bc385b171987f456fe3ee9fa998ed5e40b97b3acdd562b663aa364384a"
-  
+
+  bottle do
+    root_url "https://github.com/danielverdugo/homebrew-ledger/releases/download/ledger-3.2.1/ledger--3.2.1.big_sur.bottle.1.tar.gz"
+    sha256 "3a5631a1ce9e54c750036ab89e9f5f534b5d7bb5f8a4ec55cd3f9165078f6086" => :big_sur
+  end
+
   depends_on "cmake" => :build
   depends_on "boost"
   depends_on "boost-python3" => :build
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "python@3.9"
-  
+
   def install
     ENV.cxx11
     ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
