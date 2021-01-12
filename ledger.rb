@@ -11,7 +11,7 @@ class Ledger < Formula
 
   depends_on "cmake" => :build
   depends_on "boost"
-  depends_on "boost-python3" => :build
+  depends_on "boost-python3"
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "python@3.9"
